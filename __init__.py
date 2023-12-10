@@ -1,6 +1,4 @@
 from log import log
-from threading import Thread
-from random import randint as rand
 
 log("Импорт библиотек..", "info")
 try:
@@ -28,12 +26,21 @@ log("Экземпляр обьекта bot создан", "complete") #log
 
 log("Создание функций обработки сообщений", "info") #log
 
+#Нагрузка
+def opti_fine(message):
+    msg = message.text
+    if msg == "Егор":
+        bot.send_message(message.chat.id, "Егор тот ещё гандон. Шлюха ебливая.")
+
+
+
 #Основная обработка
 def mess(message):
     return message.text;
 
 @bot.message_handler(func=mess) #Обработка сообщения при /start
 def start(message):
+    opti_fine(message)
     log("[" + str(message.chat.username) + "]: " + str(message.text), "info")
 
 log("Функции бота обработаны.", "complete") #log
